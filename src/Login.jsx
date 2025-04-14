@@ -8,7 +8,7 @@ const Login = () => {
     const navigate = useNavigate();
       const handleSubmit = async() => {
         try{
-          const response = await axios.post(`http://localhost:3000/api/user/login`,{
+          const response = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/api/user/login`,{
             email,
             password
           });

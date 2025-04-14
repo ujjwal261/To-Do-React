@@ -11,7 +11,7 @@ const Task = () => {
 
     const handleDeleteTask = async(id) => {
       try{
-        const response = await axios.delete(`http://localhost:3000/api/tasks/delete-task/${id}`);
+        const response = await axios.delete(`${process.env.REACT_APP_API_BASE_URL}/api/tasks/delete-task/${id}`);
         if(response.status === 200){
           fetchTasks();
         }
@@ -21,7 +21,7 @@ const Task = () => {
     }
     const updateTaskStatus = async(id) => {
       try{
-        const response = await axios.patch(`http://localhost:3000/api/tasks/update-status/${id}` , {
+        const response = await axios.patch(`${process.env.REACT_APP_API_BASE_URL}/api/tasks/update-status/${id}` , {
           status : "completed"
         });
         if(response.status === 200){
@@ -34,7 +34,7 @@ const Task = () => {
     
     const fetchTasks = async () => {
         try{
-            const response = await axios.get(`http://localhost:3000/api/tasks/get-all-tasks`);
+            const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/tasks/get-all-tasks`);
             console.log(response); 
             setTasks(response?.data?.tasks)
           }catch(err){
@@ -52,7 +52,7 @@ const Task = () => {
             toast.error("Task field is required");
             return;
           }
-          const response = await axios.post(`http://localhost:3000/api/tasks/add-task` , {
+          const response = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/api/tasks/add-task` , {
             task_description : task,
             status : "pending",
             task_date : date

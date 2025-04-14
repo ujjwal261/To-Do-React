@@ -6,11 +6,9 @@ const Login = () => {
     const [email , setEmail] = useState("");
     const [password , setPassword] = useState("");
     const navigate = useNavigate();
-    console.log(process.env.REACT_APP_URI);
       const handleSubmit = async() => {
         try{
-          console.log("running" , `${process.env.REACT_APP_URI}/user/login`);
-          const response = await axios.post(`${process.env.REACT_APP_URI}/user/login`,{
+          const response = await axios.post(`http://localhost:3000/api/user/login`,{
             email,
             password
           });
@@ -21,13 +19,32 @@ const Login = () => {
         }
       }
     return(
-        <>
-            <label htmlFor="">Email</label>
-            <input type="text" name="email" onChange={(e) => setEmail(e.target.value)}/>
-            <label htmlFor="">Password</label>
-            <input type="password" name="password" onChange={(e) => setPassword(e.target.value)}/>
-            <button onClick={handleSubmit}>Login</button>
-        </>
+      <div style={
+        {
+          display : "flex",
+          height : "100%",
+          width : "100%",
+          justifyContent : "center",
+          alignItems : "center"
+        }
+      }>
+        <div style={{
+          display : "flex",
+          flexDirection : "column",
+          height : "400px",
+          width : "400px",
+          justifyContent : "center",
+        }}>
+          <label htmlFor="">Email</label>
+          <input type="email" name="email" placeholder="xyz@gmail.com" onChange={(e) => setEmail(e.target.value)}/><br/>
+          <label htmlFor="">Password</label>
+          <input type="password" name="password" onChange={(e) => setPassword(e.target.value)}/><br/>
+          <span style={{
+            width : "100%",
+            textAlign : "center"
+          }}><button onClick={handleSubmit}>Login</button></span>
+        </div>
+      </div>
     )
 }
 

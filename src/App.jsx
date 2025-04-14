@@ -2,7 +2,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import axios from 'axios';
 import Task from './Task.jsx';
-import Login from './login.jsx';
+import Login from './Login.jsx';
 import Register from './Register.jsx';
 
 

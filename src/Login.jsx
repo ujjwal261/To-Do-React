@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Login = () => {
     const [email , setEmail] = useState("");
@@ -14,9 +15,11 @@ const Login = () => {
             password
           });
           console.log(response);
-          navigate("/task")
+          navigate("/project")
+          toast.success('User logged in successfully');
         }catch(err){
           console.log("Error in adding user");
+          toast.error("Error in logging in")
         }
       }
     return(

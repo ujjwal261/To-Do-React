@@ -21,6 +21,7 @@ const Register = () => {
           }
         }catch(err){
           console.log("Error in adding user");
+          toast.warn("User already registered")
           navigate("/login");
         }
     }
